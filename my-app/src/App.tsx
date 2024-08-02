@@ -13,13 +13,13 @@ function App() {
     <Routes >
     <Route
       element={<Room />}
-      path='/'
+      path='/room'
 
     />
     <Route 
     element={<Chat/>
     }
-    path='/chat'
+    path='/'
     />
  </Routes>
    </BrowserRouter>

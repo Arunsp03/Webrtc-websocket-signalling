@@ -125,10 +125,9 @@ async function createoffer()
     <div>
       <video ref={localvideo} id='video1' autoPlay playsInline></video>
       <video ref={remotevideo} id='video2' autoPlay playsInline></video>
-      <textarea ref={textarea1} id='t1'></textarea>
       <button onClick={()=>{
         createoffer();
-      }}>Create offer</button>
+      }}>Start Call</button>
       
     </div>
   )
