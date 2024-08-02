@@ -1,0 +1,19 @@
+import { WebSocketServer}  from 'ws';
+
+const wss = new WebSocketServer({ port: 8080 });
+
+wss.on('connection', function connection(ws) {
+  ws.on('error', console.error);
+  ws.on('message', function message(data) {
+    let parseddata=JSON.parse(data.toString()); 
+   console.log("data",parseddata);
+ 
+    wss.clients.forEach((client)=>{
+        if (client !== ws) {
+            client.send(JSON.stringify(parseddata));
+        }
+    })  
+});
+
+
+});  

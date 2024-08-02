@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const ws_1 = require("ws");
+const wss = new ws_1.WebSocketServer({ port: 8080 });
+wss.on('connection', function connection(ws) {
+    ws.on('error', console.error);
+    ws.on('message', function message(data) {
+        let parseddata = JSON.parse(data.toString());
+        console.log("data", parseddata);
+        wss.clients.forEach((client) => {
+            if (client !== ws) {
+                client.send(JSON.stringify(parseddata));
+            }
+        });
+    });
+});
